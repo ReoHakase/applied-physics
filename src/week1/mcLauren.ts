@@ -37,6 +37,11 @@ export const cosHigherOrderDerivative: HigherOrderDerivative = (order) => {
   return 0;
 };
 
+// exp関数の原点x = 0での高階導関数
+export const expHigherOrderDerivative: HigherOrderDerivative = (order) => {
+  return 1;
+};
+
 // log関数のx = 1での高階導関数
 export const log1pHigherOrderDerivative: HigherOrderDerivative = (order) => {
   if (order === 0) {

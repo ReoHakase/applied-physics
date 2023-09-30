@@ -2,6 +2,7 @@ import { expect, test, describe } from "bun:test";
 import {
   sinHigherOrderDerivative,
   cosHigherOrderDerivative,
+  expHigherOrderDerivative,
   calcMcLaurenSeries,
   calcLog1pMcLaurenSeries,
 } from "./mcLauren";
@@ -35,6 +36,22 @@ describe("cos関数のマクローリン展開", () => {
         x
       );
       const actual = Math.cos(x);
+      expect(solution).toBeCloseTo(actual);
+    });
+  });
+});
+
+describe("exp関数のマクローリン展開", () => {
+  const MAX_ORDER = 50;
+  const values = Array.from({ length: 17 }, (_, i) => (i - 8) / 2);
+  values.forEach((x) => {
+    test(`x = ${x}`, () => {
+      const solution = calcMcLaurenSeries(
+        expHigherOrderDerivative,
+        MAX_ORDER,
+        x
+      );
+      const actual = Math.exp(x);
       expect(solution).toBeCloseTo(actual);
     });
   });
